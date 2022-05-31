@@ -1,7 +1,9 @@
 import logoSvg from "../assets/img/pizza-logo.svg"
 import { Link } from 'react-router-dom'
 import Search from './Search/index'
-function Header({searchValue,setSearchValue}) {
+import { createSlice } from '@reduxjs/toolkit'
+
+function Header() {
     return(<div className="header">
           <div className="container">
             <Link to="/">
@@ -13,7 +15,7 @@ function Header({searchValue,setSearchValue}) {
               </div>
             </div>
             </Link>
-            <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <Search />
             {/* <Link to="/Cart"> */}
               
             <div className="header__cart">

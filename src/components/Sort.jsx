@@ -1,8 +1,10 @@
 import React from 'react'
-function Sort({sortType,onClickSort}){
+import {useDispatch,useSelector} from  'react-redux'
+import {setSort} from '../redux/slises/filterSlise'
+function Sort({onClickSort}){
   const [open,setOpen]=React.useState(false)
-  
-
+  const dispatch=useDispatch()
+const sort=useSelector(state=>state.filter.sort)
   const list=[
               {name:"популярности (DESC)",sortProperty:'rating'},
               {name:"популярности (ASC)",sortProperty:'-rating'},
@@ -11,8 +13,9 @@ function Sort({sortType,onClickSort}){
               {name:"алфавиту (DESC)",sortProperty:'title'},
               {name:"алфавиту (ASC)",sortProperty:'-title'}
             ]
-  const onClickListItem=(i)=>{
-    onClickSort(i);
+  const onClickListItem=(obj)=>{
+    dispatch(setSort(obj))
+    // onClickSort(i);
     setOpen(!open);
   };
 
@@ -37,7 +40,7 @@ function Sort({sortType,onClickSort}){
       onClick={()=>
       setOpen(!open)}>
 
-        {sortType.name}</span>
+        {sort.name}</span>
     </div>
     {open ? (
       <div className="sort__popup">
@@ -47,7 +50,7 @@ function Sort({sortType,onClickSort}){
             list.map((obj,i)=>(
             <li key={i}
             onClick={()=>onClickListItem(obj)}
-            className={sortType.sortProperty===obj.sortProperty ? 'active': ''}>
+            className={sort.sortProperty===obj.sortProperty ? 'active': ''}>
             {obj.name} </li>)
             )
         }

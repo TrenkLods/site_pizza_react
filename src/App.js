@@ -6,14 +6,21 @@ import { Home } from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Cart from './pages/Cart'
 
+export const SearchContext = React.createContext();
 
 function App() {
- const[searchValue,setSearchValue]=React.useState();
-//console.log(searchValue)
+  
+ 
+  const[searchValue,setSearchValue]=React.useState();
+ 
+
+
+ //console.log(searchValue)
   return (
 
     <div className="wrapper">
-      <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
+      <SearchContext.Provider value={{searchValue,setSearchValue}}>
+        <Header />
       
       <div className="content">
         <div className="container">
@@ -26,6 +33,8 @@ function App() {
        
         </div>
       </div>
+      </SearchContext.Provider>
+      
     </div>
 
 
