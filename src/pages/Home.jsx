@@ -37,7 +37,7 @@ dispatch(setCategoryId(id))
     const category=categoryId > 0 ? 'category=' + categoryId : '';
     const search =searchValue?'&search='+searchValue :'';
 //    sortBy=createdAt&orderBy=desc
-    fetch(`https://629224fc9d159855f0865c30.mockapi.io/Items?${search}${category}&soprtBy=${sortBy}&&order=${order} `,)
+    fetch(`https://63891e13a4bb27a7f79940a9.mockapi.io/Items?${search}${category}&soprtBy=${sortBy}&&order=${order} `,)
       .then((res) => {
         return res.json();
       })
